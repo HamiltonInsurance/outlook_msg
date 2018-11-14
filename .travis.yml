@@ -7,3 +7,4 @@ script:
 install:
   - pip install pipenv
   - pipenv sync
+  - pip install -e .
