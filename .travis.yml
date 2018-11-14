@@ -3,4 +3,7 @@ python:
   - "3.6"
   - "3.7"
 script:
-    - pytest
+  - pytest
+install:
+  - pip install pipenv
+  - pipenv sync
