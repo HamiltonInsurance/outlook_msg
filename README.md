@@ -1,5 +1,7 @@
 # outlook_msg
 
+[![Build Status](https://travis-ci.org/HamiltonInsurance/outlook_msg.svg?branch=master)](https://travis-ci.org/HamiltonInsurance/outlook_msg)
+
 `outlook_msg` is a Python library by [Hamilton Group](http://www.hamiltongroup.com/) to process the .msg files that 
 Users can export from Outlook. It is very common for users in organizations that use Outlook to archive data in this 
 format. For example, at Hamilton we see these files store in relation to deals we write. If we want to do automatic
