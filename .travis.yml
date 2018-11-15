@@ -1,0 +1,12 @@
+language: python
+dist: xenial
+sudo: yes
+python:
+  - "3.6"
+  - "3.7"
+script:
+  - pytest
+install:
+  - pip install pipenv
+  - pipenv sync
+  - pip install -e .
