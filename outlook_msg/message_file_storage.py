@@ -95,7 +95,8 @@ class MessageFileStorage:
             type_name = p.property_tag.prop_type_name
             if p.name == item:
                 if type_name in ('PtypeString', 'PtypBinary'):
-                    binary_data = self.document.open(self.storage[p.property_tag.substg]).read()
+                    with self.document.open(self.storage[p.property_tag.substg]) as f:
+                        binary_data = f.read()
                     return decode(binary_data, type_name)
                 elif type_name in ('PtypBoolean', 'PtypInteger32'):
                     return decode(p.value, type_name)
