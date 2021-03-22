@@ -5,6 +5,7 @@ name = "pypi"
 
 [packages]
 compoundfiles = "~=0.3"
+compressed_rtf = "~=1.0.6"
 
 [dev-packages]
 pytest = "~=3.10.1"

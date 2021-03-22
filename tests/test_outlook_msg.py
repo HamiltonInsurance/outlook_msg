@@ -1,6 +1,7 @@
 """End to end tests of the outlook message logic"""
 
 import pytest
+import email.message
 
 from outlook_msg import Message
 
@@ -23,6 +24,12 @@ def test_message_subject(message):
 
 def test_message_body(message):
     assert message.body.strip() == 'This is a test body with a single line.'
+
+
+def test_message_email_message(message):
+    eml = message.email_message()
+    assert isinstance(eml, email.message.EmailMessage)
+    assert 'Thread-Index: AdRfI65MmNrKSpldS8Sse7WZgcpbkg==' in eml.as_string()
 
 
 def test_message_sender(message):

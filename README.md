@@ -34,6 +34,11 @@ contents = msg.body
 first_attachment = msg.attachments[0]
 with first_attachment.open() as attachment_fp, open(first_attachment.filename, 'wb') as output_fp:
     output_fp.write(attachment_fp.read())
+
+# Message instance can be converted to email.message.EmailMessage instance
+email_message = msg.email_message()
+eml = email_message.as_string()
+
 ``` 
 
 ## Running the tests
