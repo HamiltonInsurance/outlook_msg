@@ -20,6 +20,10 @@ class Message:
         return self.mfs['PidTagBody']
 
     @property
+    def header(self):
+        return self.mfs['PidTagHeader']
+
+    @property
     def has_attachments(self):
         try:
             return self.mfs['PidTagHasAttachments']

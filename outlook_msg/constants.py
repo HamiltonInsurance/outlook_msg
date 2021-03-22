@@ -8,6 +8,7 @@ SUBSTG_PREFIX = '__substg1.0_'
 PROPERTY_IDS = {
     '0x0C1F': 'PidTagSenderEmailAddress',
     '0x0037': 'PidTagSubject',
+    '0x007D': 'PidTagHeader',
     '0x1000': 'PidTagBody',
     '0x1013': 'PidTagBodyHtml',
     '0x1009': 'PidTagRtfCompressed',

@@ -25,6 +25,10 @@ def test_message_body(message):
     assert message.body.strip() == 'This is a test body with a single line.'
 
 
+def test_message_header(message):
+    assert 'Thread-Index: AdRfI65MmNrKSpldS8Sse7WZgcpbkg==' in message.header
+
+
 def test_message_sender(message):
     assert message.sender_email == "/O=EXCHANGELABS/OU=EXCHANGE ADMINISTRATIVE GROUP (FYDIBOHF23SPDLT)/CN=RECIPIENTS/CN=17A93D132C634197AFD774F396AFFB26-ELLIOT HUGH"
 
