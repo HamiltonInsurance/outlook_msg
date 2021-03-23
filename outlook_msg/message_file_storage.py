@@ -90,6 +90,12 @@ class MessageFileStorage:
         doc = compoundfiles.CompoundFileReader(fp)
         return cls(doc, doc.root)
 
+    def get(self, item, default=None):
+        try:
+            return self[item]
+        except KeyError:
+            return default
+
     def __getitem__(self, item):
         for p in self._properties:
             type_name = p.property_tag.prop_type_name

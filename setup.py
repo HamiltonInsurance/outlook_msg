@@ -12,7 +12,7 @@ setuptools.setup(
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/HamiltonInsurance/outlook_msg",
-    install_requires=["compoundfiles~=0.3"],
+    install_requires=["compoundfiles~=0.3", "compressed_rtf~=1.0.6"],
     python_requires=">=3.6, <4",
     packages=setuptools.find_packages(),
     classifiers=[

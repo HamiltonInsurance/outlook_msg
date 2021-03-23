@@ -8,11 +8,13 @@ SUBSTG_PREFIX = '__substg1.0_'
 PROPERTY_IDS = {
     '0x0C1F': 'PidTagSenderEmailAddress',
     '0x0037': 'PidTagSubject',
+    '0x007D': 'PidTagHeader',
     '0x1000': 'PidTagBody',
     '0x1013': 'PidTagBodyHtml',
     '0x1009': 'PidTagRtfCompressed',
     '0x0E1B': 'PidTagHasAttachments',
     '0x0E13': 'PidTagMessageAttachments',
+    '0x3FDE': 'PidTagCodepage',
 
     # Attachments
     '0x3701': 'PidTagAttachDataBinary',
@@ -32,6 +34,12 @@ PROPERTY_TYPES = {
     # '0x0000': '', # Special, ROP, to be handled specially
 }
 
+CODEPAGES = {
+    20127: 'US-ASCII',
+    20866: 'KOI8-R',
+    28591: 'ISO-8859-1',
+    65001: 'UTF-8',
+}
 
 class HeaderFormat(enum.Enum):
     TOP_LEVEL = enum.auto()

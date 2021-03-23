@@ -1,6 +1,10 @@
 from outlook_msg import constants
+from outlook_msg.codepage import Codepage
 from outlook_msg.message_file_storage import MessageFileStorage
 from outlook_msg.attachment import Attachment
+from email import message_from_string
+import compressed_rtf
+import email.policy
 
 
 class Message:
@@ -37,3 +41,31 @@ class Message:
 
     def attachment_storage_names(self):
         return self.mfs.numbered_storage_names(constants.ATTACHMENTS_PREFIX)
+
+    def email_message(self, policy=email.policy.default):
+        if self.mfs.get('PidTagCodepage'):
+            charset = str(Codepage(self.mfs.get('PidTagCodepage')))
+        email_message = message_from_string(self.mfs.get('PidTagHeader'), policy=policy)
+        email_message.clear_content()
+        if self.mfs.get('PidTagBody'):
+            email_message.add_alternative(
+                self.mfs.get('PidTagBody'),
+                charset=charset,
+                subtype='plain')
+        if self.mfs.get('PidTagBodyHtml'):
+            email_message.add_alternative(
+                self.mfs.get('PidTagBodyHtml').encode('utf-8'),
+                maintype='text',
+                subtype='html')
+        if self.mfs.get('PidTagRtfCompressed'):
+            email_message.add_alternative(
+                compressed_rtf.decompress(self.mfs.get('PidTagRtfCompressed')),
+                maintype='application',
+                subtype='rtf')
+        for attachment in self.attachments:
+            with attachment.open() as fh:
+                email_message.add_attachment(fh.read(),
+                    maintype='application',
+                    subtype='octet-stream',
+                    filename=attachment.filename)
+        return email_message
